@@ -50,12 +50,19 @@ for x in $(cat /proc/cmdline); do
 done
 
 if [ -n "$BROKEN_CLOCK" -a -n "$ROOTDEV" ];then
-        ROOTDISK=$(readlink -f "$ROOTDEV") &&
+        ROOTDISK=$(readlink -f "$ROOTDEV")
 
-        TIMESTR=$(dumpe2fs -h "$ROOTDISK" 2>/dev/null|grep "Last mount time") &&
-        TIME=${TIMESTR#*:} &&
+        TIMESTR=$(dumpe2fs -h "$ROOTDISK" 2>/dev/null|grep "Last mount time")
+        TIME=${TIMESTR#*:}
 
-        date --set="${TIME} 1 minute" >/dev/null 2>&1
+	hwclock -s
+
+	MOUNTTIME=$(date --utc --date  "${TIME}"  +%s)
+	CURDATE=$(date --utc --date "$(date)" +%s)
+
+	if [ "$MOUNTTIME" -gt "$CURDATE" ]; then
+        	date --set="${TIME} 1 minute" >/dev/null 2>&1
+	fi
 fi
 
 # This script is best-effort.  If we couldn't fudge the clock as desired,
