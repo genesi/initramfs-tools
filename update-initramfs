@@ -232,10 +232,6 @@ run_bootloader()
 		zipl
 		return 0
 	fi
-	if flash-kernel --supported >/dev/null 2>&1; then
-		flash-kernel ${version}
-		return 0
-	fi
 }
 
 compare_sha1()
