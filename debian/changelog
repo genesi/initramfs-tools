@@ -1,3 +1,10 @@
+initramfs-tools (1.0.0genesi1) maverick; urgency=low
+
+   * make sure fixrtc only updates the RTC setting if the last mount time
+     is actually in the future (LP: #947988) (Oliver Grawert <ogra@ubuntu.com>)
+
+ -- Matt Sealey <matt@genesi-usa.com>  Wed, 20 Mar 2013 09:12:21 -0600
+
 initramfs-tools (0.98.1ubuntu6.1) maverick-proposed; urgency=low
 
   * Rename xhci to xhci-hcd to fix booting from USB 3.0 devices
