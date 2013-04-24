@@ -135,16 +135,16 @@ else
 fi
 
 if ! command -v "${compress}" >/dev/null 2>&1; then
-	compress=gzip
-	COMPRESS=gzip
 	[ "${verbose}" = y ] && \
 		echo "No ${COMPRESS} in ${PATH}, using gzip"
+	compress=gzip
+	COMPRESS=gzip
 fi
 
 if ! `grep -q -i ^config_rd_${COMPRESS%p} /boot/config-${version}` ; then
-	compress=gzip
 	[ "${verbose}" = y ] && \
-		echo "linux-2.6 misses ${COMPRESS} support, using gzip"
+		echo "Kernel is missing ${COMPRESS} support, using gzip"
+	compress=gzip
 fi
 
 [ "${compress}" = lzop ] && compress="lzop -9"
