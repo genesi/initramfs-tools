@@ -11,9 +11,9 @@ override_dh_auto_clean:
 
 override_dh_install:
 	dh_install
-ifneq (,$(filter initramfs-tools,$(shell dh_listpackages)))
-	cp -a scripts/init-top/keymap \
-		debian/initramfs-tools/usr/share/initramfs-tools/scripts/panic/keymap
-	sed -i -e "/^OPTION=/d" \
-		debian/initramfs-tools/usr/share/initramfs-tools/scripts/panic/keymap
-endif
+#ifneq (,$(filter initramfs-tools,$(shell dh_listpackages)))
+#	cp -a scripts/init-top/keymap \
+#		debian/initramfs-tools/usr/share/initramfs-tools/scripts/panic/keymap
+#	sed -i -e "/^OPTION=/d" \
+#		debian/initramfs-tools/usr/share/initramfs-tools/scripts/panic/keymap
+#endif
