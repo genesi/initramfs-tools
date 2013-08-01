@@ -52,7 +52,7 @@ done
 if [ -n "$BROKEN_CLOCK" -a -n "$ROOTDEV" ];then
         ROOTDISK=$(readlink -f "$ROOTDEV")
 
-        TIMESTR=$(dumpe2fs -h "$ROOTDISK" 2>/dev/null|grep "Last mount time")
+        TIMESTR=$(dumpe2fs -h "$ROOTDISK" 2>/dev/null|grep "Filesystem created")
         TIME=${TIMESTR#*:}
 
 	hwclock -s

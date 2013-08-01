@@ -1,6 +1,7 @@
-initramfs-tools (1.0.1genesi1) maverick; urgency=low
+initramfs-tools (1.0.1genesi2) maverick; urgency=low
 
    * update hook-functions to succeed with ubifs based root
+   * use filesystem created time to set clock instead
 
  -- Ahmed Ammar <aamamr@genesi-usa.com>  Mon, 29 Jul 2013 09:12:21 -0600
 
